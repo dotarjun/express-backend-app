@@ -91,10 +91,7 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/questions', (req, res) => {
-
-
-    // TODO return the user all the quesrions
-    res.send('Hello World! from route 2')
+    return res.status(200).send(QUESTIONS)
 })
 
 app.get('/submissions ', (req, res) => {
