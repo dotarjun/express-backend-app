@@ -48,22 +48,29 @@ const QUESTIONS = [
 ]
 
 const SUBMISSIONS = [{
-
 }]
 
 
 // TODO add an object store
 
 app.post('/signup', (req, res) => {
-    // TODO add logic to decode body
-    // body should have user email and password
+    const userEmail = req.body.email;
+    const userPassword = req.body.password;
 
-    // Store email and paddword (as is for now) in the USERS array
-    //(only if user doesnt already exist)
+    if (USERS.find(user => user.email === userEmail)) {
+        error = {
+            message: 'User already exists'
+        }
+        return res.status(400).send(error)
+    }
 
-
-    //return status code 200
-    res.send('Hello World! from route 1')
+    else {
+        USERS.push({
+            email: userEmail,
+            password: userPassword
+        })
+        return req.status(200).send('User created')
+    }
 })
 
 app.post('/login', (req, res) => {
