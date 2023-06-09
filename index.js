@@ -95,10 +95,9 @@ app.get('/questions', (req, res) => {
 })
 
 app.get('/submissions ', (req, res) => {
-
-    // TODO return the users submission for this problem
-    res.send('Hello World! from route 2')
+    return res.status(200).send(SUBMISSIONS)
 })
+
 app.post('/submissions ', (req, res) => {
 
     // TODO let the user submit a problem, randomly accept or reject the solution
