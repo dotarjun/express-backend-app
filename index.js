@@ -4,14 +4,48 @@ const port = 3000
 
 const USERS = [];
 
-const QUESTIONS = [{
-    title: "Two States",
-    description: "Given an array, return the max of the array",
-    testCases: [{
-        input: "[1,2,3,4,5]",
-        output: "5"
-    }]
-}]
+const QUESTIONS = [
+    {
+        title: "Two States",
+        description: "Given an array, return the max of the array",
+        testCases: [{
+            input: [1, 2, 3, 4, 5],
+            output: 5
+        }]
+    },
+    {
+        title: "Maximum Element",
+        description: "Given an array of integers, return the maximum element in the array.",
+        testCases: [{
+            input: [1, 5, 2, 9, 4],
+            output: 9
+        }]
+    },
+    {
+        title: "Minimum Element",
+        description: "Given an array of integers, return the minimum element in the array.",
+        testCases: [{
+            input: [1, 5, 2, 9, 4],
+            output: 1
+        }]
+    },
+    {
+        title: "Sum of Array",
+        description: "Given an array of integers, return the sum of all the elements in the array.",
+        testCases: [{
+            input: [1, 5, 2, 9, 4],
+            output: 21
+        }]
+    },
+    {
+        title: "Average of Array",
+        description: "Given an array of integers, return the average of all the elements in the array.",
+        testCases: [{
+            input: [1, 5, 2, 9, 4],
+            output: 4.2
+        }]
+    }
+]
 
 const SUBMISSIONS = [{
 
@@ -36,10 +70,14 @@ app.post('/login', (req, res) => {
     // TODO add logic to decode body
     // body should have user email and password
 
+
+
     // check if user with the given email exists in USERS array
     // also ensure that password is the same
 
     //if password is the same, return back 200 status code to the client
+    // else return 401 status code to the client
+
     res.send('Hello World! from route 2')
 })
 
