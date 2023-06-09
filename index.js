@@ -6,6 +6,7 @@ const USERS = [];
 
 const QUESTIONS = [
     {
+        questionID: 1,
         title: "Two States",
         description: "Given an array, return the max of the array",
         testCases: [{
@@ -14,6 +15,7 @@ const QUESTIONS = [
         }]
     },
     {
+        questionID: 2,
         title: "Maximum Element",
         description: "Given an array of integers, return the maximum element in the array.",
         testCases: [{
@@ -22,6 +24,7 @@ const QUESTIONS = [
         }]
     },
     {
+        questionID: 3,
         title: "Minimum Element",
         description: "Given an array of integers, return the minimum element in the array.",
         testCases: [{
@@ -30,6 +33,7 @@ const QUESTIONS = [
         }]
     },
     {
+        questionID: 4,
         title: "Sum of Array",
         description: "Given an array of integers, return the sum of all the elements in the array.",
         testCases: [{
@@ -38,6 +42,7 @@ const QUESTIONS = [
         }]
     },
     {
+        questionID: 5,
         title: "Average of Array",
         description: "Given an array of integers, return the average of all the elements in the array.",
         testCases: [{
@@ -99,10 +104,29 @@ app.get('/submissions ', (req, res) => {
 })
 
 app.post('/submissions ', (req, res) => {
+    const { questionID, solution } = req.body;
+    const question = QUESTIONS.find(question => question.questionID === questionID);
 
-    // TODO let the user submit a problem, randomly accept or reject the solution
-    // store the submission in the submission array above
-    res.send('Hello World! from route 2')
+    if (!question) {
+        return res.status(400).send('Question not found')
+    }
+
+    const correct = Math.random() > 0.5;
+    
+    const submission = {
+        questionID,
+        solution,
+        correct
+    }
+
+    SUBMISSIONS.push(submission);
+
+    if (correct) {
+        return res.status(200).send('Correct')
+    }
+    else {
+        return res.status(400).send('Incorrect')
+    }
 })
 
 
