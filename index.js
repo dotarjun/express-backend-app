@@ -2,7 +2,30 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-const USERS = [];
+const USERS = [
+    {
+        email: "arjun@arjunsingh.tech",
+        password: "Arjuntheboss",
+        isAdmin: true
+    },
+    {
+        email: "johndoe@email.com",
+        password: "johndoe123",
+        isAdmin: false
+    },
+    {
+        email: "maryjane@email.com",
+        password: "maryjanexo",
+        isAdmin: false
+    },
+
+    {
+        email: "githubCopilot@github.com",
+        password: "CopilotSucks",
+        isAdmin: false
+    }
+
+];
 
 const QUESTIONS = [
     {
@@ -112,7 +135,7 @@ app.post('/submissions ', (req, res) => {
     }
 
     const correct = Math.random() > 0.5;
-    
+
     const submission = {
         questionID,
         solution,
